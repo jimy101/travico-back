@@ -4,15 +4,17 @@ const route = express.Router();
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
-// let now = new Date()
-// console.log(now.getTime().toString())
+//===
+const fullPath = path.join(__dirname, "..", "uploads");
 // storage
 const Storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, path.join(__dirname, "..", "uploads"));
+    callback(null, fullPath);
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().getTime().toString() + file.originalname);
+    const fullName = new Date().getTime().toString() + file.originalname;
+    file.finalDist = `uploads/${fullName}`;
+    cb(null, fullName);
   },
 });
 const upload = multer({ storage: Storage });

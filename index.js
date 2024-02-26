@@ -22,6 +22,8 @@ mongoose
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+//
+app.use("/uploads", express.static("./uploads"));
 // routes
 app.use("/users", UserRoute);
 app.use("/travels", TravelRoute);

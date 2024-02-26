@@ -1,17 +1,21 @@
 const Travel = require("../models/Travel");
 const jwt = require("jsonwebtoken");
-const multer = require("multer");
-const path = require("path");
-// storage
-const Storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, path.join(__dirname, "..", "..", "uploads"));
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date() + file.originalname);
-  },
-});
-const upload = multer({ storage: Storage });
+// const multer = require("multer");
+// const path = require("path");
+// //
+// // storage
+// const fullPath = path.join(__dirname, "..", "..", "uploads");
+// const Storage = multer.diskStorage({
+//   destination: (req, file, callback) => {
+//     callback(null, fullPath);
+//   },
+//   filename: (req, file, cb) => {
+//     const fullName = Date() + file.originalname;
+//     file.finalDist = `uploads/${fullName} `;
+//     cb(null, fullName);
+//   },
+// });
+// const upload = multer({ storage: Storage });
 // all travels
 const ShowAll = async (req, res) => {
   try {
@@ -41,9 +45,9 @@ const AddTravel = async (req, res) => {
     if (err) {
       res.sendStatus(403);
     } else {
-      console.log(req.body);
+      // console.log(req.body);
       console.log(req.file);
-      let imgUrl = req.file.filename;
+      let imgUrl = req.file.finalDist;
       let { title, body, price, cat } = req.body;
       let data = Travel.create({
         title,
