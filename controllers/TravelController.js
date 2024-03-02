@@ -51,7 +51,7 @@ const AddTravel = async (req, res) => {
     } else {
       console.log(req.body);
       console.log(req.file);
-      let imgUrl = await req.file.finalDist;
+      let imgUrl = await req.file;
       await cloudinary.uploader.upload(imgUrl, function (error, result) {
         console.log(result);
         let imgSrc = result.url;
@@ -96,7 +96,7 @@ const EditTravel = async (req, res) => {
     if (err) {
       res.sendStatus(403);
     } else {
-      let imgUrl = await req.file.finalDist;
+      let imgUrl = await req.file;
       console.log(req.body);
       console.log(req.file);
       await cloudinary.uploader.upload(imgUrl, async function (error, result) {
