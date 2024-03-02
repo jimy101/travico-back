@@ -15,7 +15,15 @@ const travelSchema = mongoose.Schema({
   },
   imgUrl: {
     type: String,
-    required: true,
+    // required: true,
+  },
+  imgSrc: {
+    type: String,
+    // required: true,
+  },
+  imgScureSrc: {
+    type: String,
+    // required: true,
   },
   cat: {
     type: String,

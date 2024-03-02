@@ -37,9 +37,6 @@ route.patch(
 );
 //delete Travel
 route.delete("/:id", verifyToken, TravelController.DeleteTravel);
-// search blog
-// route.get("/searchTitle/:search", verifyToken, TravelController.SearchByTitle);
-// route.get("/searchAuthor/:search", verifyToken, TravelController.SearchByAuthor);
 
 // mid
 function verifyToken(req, res, next) {
