@@ -63,7 +63,7 @@ const AddTravel = async (req, res) => {
           price,
           imgSrc,
           imgScureSrc,
-          imgUrl,
+          // imgUrl,
           cat,
         });
         if (data == undefined) {
@@ -109,7 +109,7 @@ const EditTravel = async (req, res) => {
           {
             title: title,
             body: body,
-            imgUrl: imgUrl,
+            // imgUrl: imgUrl,
             imgSrc: imgSrc,
             imgScureSrc: imgScureSrc,
             price: price,
