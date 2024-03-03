@@ -5,15 +5,15 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 //===
-const fullPath = path.join(__dirname, "..", "uploads");
+// const fullPath = path.join(__dirname, "..", "uploads");
 // storage
 const Storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, fullPath);
-  },
+  // destination: (req, file, callback) => {
+  //   callback(null, fullPath);
+  // },
   filename: (req, file, cb) => {
     const fullName = new Date().getTime().toString() + file.originalname;
-    file.finalDist = `uploads/${fullName}`;
+    // file.finalDist = `uploads/${fullName}`;
     cb(null, fullName);
   },
 });
@@ -37,9 +37,6 @@ route.patch(
 );
 //delete Travel
 route.delete("/:id", verifyToken, TravelController.DeleteTravel);
-// search blog
-// route.get("/searchTitle/:search", verifyToken, TravelController.SearchByTitle);
-// route.get("/searchAuthor/:search", verifyToken, TravelController.SearchByAuthor);
 
 // mid
 function verifyToken(req, res, next) {
